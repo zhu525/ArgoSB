@@ -8,7 +8,7 @@
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
 
-#### 5、代理协议选择自由度高，支持单个或多个代理协议任意组合
+#### 5、代理协议选择自由度高，支持单个或多个代理协议任意组合【无需域名】
 【目前支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
 
 #### 6、如需要多样的功能，推荐使用VPS专用四合一脚本[Sing-box-yg](https://github.com/yonggekkk/sing-box-yg)
