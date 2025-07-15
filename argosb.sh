@@ -256,7 +256,7 @@ if [ -z "$port_hy2" ]; then
 port_hy2=$(shuf -i 10000-65535 -n 1)
 fi
 echo "$port_hy2" > "$HOME/agsb/port_hy2"
-echo "Hysteria-2端口：$port_hy2"
+echo "Hysteria2端口：$port_hy2"
 cat >> "$HOME/agsb/sb.json" <<EOF
     {
         "type": "hysteria2",
