@@ -10,7 +10,7 @@
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
 
-#### 5、支持代理内核添加wireguard-warp全局出站模式
+#### 5、支持代理内核添加Wireguard-WARP全局出站模式
 
 #### 6、所有代理协议都无需域名，选择自由度高，支持单个或多个代理协议任意组合
 【目前支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
@@ -68,7 +68,7 @@
 注意：变量值填写在""之间，变量之间空一格，不用的变量可以删除
 
 ```
-vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" uuid="" reym="" argo="" agn="" agk="" ip="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" warp="" uuid="" reym="" argo="" agn="" agk="" ip="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
 ----------------------------------------------------------
