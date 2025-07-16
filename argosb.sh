@@ -794,7 +794,7 @@ cip
 exit
 elif [ "$1" = "res" ]; then
 killstart
-echo "重启完成"
+sleep 2 && echo "重启完成"
 exit
 fi
 if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' && ! pgrep -f 'agsb/(s|x)' >/dev/null 2>&1; then
