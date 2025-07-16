@@ -50,7 +50,17 @@ warpcheck(){
 wgcfv6=$(curl -s6m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
 wgcfv4=$(curl -s4m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
 }
+v4v6(){
+v4=$(curl -s4m5 icanhazip.com -k)
+v6=$(curl -s6m5 icanhazip.com -k)
+}
 warpsx(){
+v4v6
+if echo "$v6" | grep -q '^2a09' || echo "$v4" | grep -q '^104.28'; then
+xouttag=direct
+souttag=direct
+wap=warpargo
+else
 if [ "$wap" != yes ]; then
 xouttag=direct
 souttag=direct
@@ -77,6 +87,7 @@ else
 xouttag=direct
 souttag=direct
 wap=warpargo
+fi
 fi
 }
 insuuid(){
@@ -621,8 +632,7 @@ echo "$server_ip" > "$HOME/agsb/server_ip.log"
 fi
 }
 ipchange(){
-v4=$(curl -s4m5 icanhazip.com -k)
-v6=$(curl -s6m5 icanhazip.com -k)
+v4v6
 if [ -z "$v4" ]; then
 vps_ipv4='无IPV4'
 vps_ipv6="$v6"
@@ -633,11 +643,18 @@ else
 vps_ipv4="$v4"
 vps_ipv6='无IPV6'
 fi
+if echo "$v6" | grep -q '^2a09'; then
+w6="【WARP】"
+fi
+if echo "$v4" | grep -q '^104.28'; then
+w4="【WARP】"
+fi
 echo
 echo "=========当前服务器本地IP情况========="
-echo "本地IPV4地址：$vps_ipv4"
-echo "本地IPV6地址：$vps_ipv6"
+echo "本地IPV4地址：$vps_ipv4 $w4"
+echo "本地IPV6地址：$vps_ipv6 $w6"
 echo
+sleep 2
 if [ "$ipsw" = "4" ]; then
 if [ -z "$v4" ]; then
 ipbest
