@@ -431,7 +431,7 @@ cat >> "$HOME/agsb/xr.json" <<EOF
               "0.0.0.0/0",
               "::/0"
             ],
-            "endpoint": "${endip}:2408"
+            "endpoint": "${xendip}:2408"
           }
         ],
         "reserved": [134, 63, 85]
@@ -476,7 +476,7 @@ cat >> "$HOME/agsb/sb.json" <<EOF
       "private_key": "COAYqKrAXaQIGL8+Wkmfe39r1tMMR80JWHVaF443XFQ=",
       "peers": [
         {
-          "address": "${endip}",
+          "address": "${sendip}",
           "port": 2408,
           "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
           "allowed_ips": [
@@ -803,9 +803,11 @@ kill -15 $(pgrep -f 'agsb/s' 2>/dev/null) $(pgrep -f 'agsb/c' 2>/dev/null) $(pgr
 v4orv6(){
 if [ -z "$(curl -s4m5 icanhazip.com -k)" ]; then
 echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1\nnameserver 2a01:4f8:c2c:123f::1" > /etc/resolv.conf
-endip=2606:4700:d0::a29f:c101
+sendip="2606:4700:d0::a29f:c101"
+xendip="[2606:4700:d0::a29f:c101]"
 else
-endip=162.159.192.1
+sendip="162.159.192.1"
+xendip="162.159.192.1"
 fi
 }
 warpcheck
