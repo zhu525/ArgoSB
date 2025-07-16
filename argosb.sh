@@ -60,6 +60,8 @@ if echo "$v6" | grep -q '^2a09' || echo "$v4" | grep -q '^104.28'; then
 xouttag=direct
 souttag=direct
 wap=warpargo
+echo
+echo "请注意：你已安装了非甬哥ygkkk版的warp"
 else
 if [ "$wap" != yes ]; then
 xouttag=direct
