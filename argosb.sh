@@ -61,7 +61,7 @@ xouttag=direct
 souttag=direct
 wap=warpargo
 echo
-echo "请注意：你已安装了非甬哥ygkkk版的warp"
+echo "请注意：你已安装了warp"
 else
 if [ "$wap" != yes ]; then
 xouttag=direct
