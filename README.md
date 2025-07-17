@@ -10,7 +10,7 @@
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
 
-#### 5、支持添加Wireguard-WARP全局出站模式，更换落地IP为WARP的IP
+#### 5、指定内核可选Wireguard-WARP全局出站模式，更换落地IP为WARP的IP
 
 #### 6、所有代理协议都无需域名，选择自由度高，支持单个或多个代理协议任意组合
 【目前支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
