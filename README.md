@@ -67,7 +67,7 @@
 
 ### 二、SSH一键变量脚本模版说明：
 
-脚本以```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)```的形式运行，一次回车即可快速安装
+脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行，一次回车即可快速安装
 
 必选其一的协议端口变量：```vmpt=""```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```
 
