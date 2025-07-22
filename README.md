@@ -34,7 +34,7 @@
 | 9、argo固定隧道域名 | agn | 解析在CF上的域名 | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道|
 | 10、argo固定隧道token | agk | CF获取的ey开头的token | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道 |
 | 11、uuid密码 | uuid | 符合uuid规定格式 | 随机生成 | 随机生成 | 可选 |
-| 12、reality域名 | reym | 符合reality域名规定 | yahoo | yahoo | 可选，使用CF类域名时，可用作ProxyIP/客户端地址反代IP（建议高位端口或纯IPV6下使用，以防被扫泄露）|
+| 12、reality域名（仅支持reality类协议） | reym | 符合reality域名规定 | yahoo | yahoo | 可选，使用CF类域名时，可用作ProxyIP/客户端地址反代IP（建议高位端口或纯IPV6下使用，以防被扫泄露）|
 | 13、切换ipv4或ipv6配置 | ip | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
 | 14、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
 | 15、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
@@ -67,35 +67,65 @@
 
 ### 二、SSH一键变量脚本模版：
 
-注意：变量值填写在""之间，变量之间空一格，不用的变量可以删除
+```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)```
 
-```
-vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" warp="" uuid="" reym="" argo="" agn="" agk="" ip="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
-```
+可选功能型变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ip=""```
+
+注意：变量值填写在""之间，变量之间空一格，不用的变量可以删除
 
 ----------------------------------------------------------
 
 ### 三、SSH一键脚本的三类组合推荐：
 
-1：全协议共存或者单协议 + Argo临时/固定隧道
-```
-vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
-```
-
-2：仅argo临时隧道，固定隧道必须填写端口(vmpt)、域名(agn)、token(agk)
+#### 1：仅Argo临时/固定隧道
 
 类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
 
+仅argo临时隧道节点
 ```
-vmpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+vmpt="" argo="y" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-3：单协议，主流UPD协议或者TCP协议单独运行
+仅argo固定隧道节点，必须填写端口(vmpt)、域名(agn)、token(agk)
+```
+vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
 
-hy2为例：以下脚本启用hy2变量hypt，其他协议变量参考变量参数说明
+#### 2：单协议，主流UPD协议或者TCP协议单独运行
 
+Vless-Reality-Vision协议节点
+```
+vlpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+Vless-Xhttp-Reality协议节点
+```
+xhpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+AnyTLS协议节点
+```
+anpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+Vmess-ws协议节点
+```
+vmpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+Hy2协议节点
 ```
 hypt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+Tuic协议节点
+```
+tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+#### 3：全协议共存 + Argo临时/固定隧道
+```
+vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
 ---------------------------------------------------------
