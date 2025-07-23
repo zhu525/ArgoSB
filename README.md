@@ -6,13 +6,13 @@
 
 #### 2、支持Docker Image镜像部署，公开镜像库：```ygkkk/argosb```
 
-#### 3、SSH脚本主打极简轻便，几乎无需依赖，支持非root，兼容所有主流VPS系统
+#### 3、SSH脚本主打极简、轻便、快速，几乎无需依赖，支持非root，兼容所有主流VPS系统
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
 
 #### 5、指定内核可选Wireguard-WARP全局出站模式，更换落地IP为WARP的IP
 
-#### 6、所有代理协议都无需域名，选择自由度高，支持单个或多个代理协议任意组合
+#### 6、所有代理协议都无需域名，支持单个或多个代理协议任意组合
 【目前支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
 
 #### 7、如需要多样的功能，推荐使用VPS专用四合一脚本[Sing-box-yg](https://github.com/yonggekkk/sing-box-yg)
@@ -51,7 +51,7 @@
 
 3、argo临时隧道重启后，临时域名会变，需重新导出argo节点，固定隧道则不变
 
-4、xray/sing-box/argo三内核同时运行会触发某些docker容器限制，出现报错，建议最多同时运行两个内核
+4、xray/sing-box/argo三内核同时运行会触发某些docker容器限制而报错，建议最多同时运行两个内核
 
 #### 使用VPS注意：
 
@@ -125,7 +125,7 @@ Tuic协议节点
 tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-#### 3：全协议共存 + Argo临时/固定隧道
+#### 3：可选任意协议组合 + Argo临时/固定隧道
 ```
 vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
