@@ -8,7 +8,7 @@
 
 #### 3、SSH脚本主打极简、轻量、快速，几乎无需依赖，支持非root，兼容所有主流VPS系统
 
-#### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
+#### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云、CloudCat的服务器
 
 #### 5、指定内核可选Wireguard-WARP全局出站模式，更换落地IP为WARP的IP
 
