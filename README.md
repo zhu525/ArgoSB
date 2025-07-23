@@ -6,7 +6,7 @@
 
 #### 2、支持Docker Image镜像部署，公开镜像库：```ygkkk/argosb```
 
-#### 3、SSH脚本主打极简、轻便、快速，几乎无需依赖，支持非root，兼容所有主流VPS系统
+#### 3、SSH脚本主打极简、轻量、快速，几乎无需依赖，支持非root，兼容所有主流VPS系统
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云类的服务器
 
