@@ -36,8 +36,9 @@
 | 11、uuid密码 | uuid | 符合uuid规定格式 | 随机生成 | 随机生成 | 可选 |
 | 12、reality域名（仅支持reality类协议） | reym | 符合reality域名规定 | yahoo | yahoo | 可选，使用CF类域名时，可用作ProxyIP/客户端地址反代IP（建议高位端口或纯IPV6下使用，以防被扫泄露）|
 | 13、切换ipv4或ipv6配置 | ip | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
-| 14、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
-| 15、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
+| 14、添加所有节点名称前缀 | name | 任意字符 | 协议名前缀 | 协议名前缀 | 可选 |
+| 15、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
+| 16、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
 
 ![f776f1b3b1e0ebe9a537baf8660a387](https://github.com/user-attachments/assets/b9b357de-85b8-4270-aa87-2f50d63d672e)
@@ -71,7 +72,7 @@
 
 必选其一的协议端口变量：```vmpt=""```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```
 
-可选功能型变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ip=""```
+可选功能型变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ip=""```、```name=""```
 
 注意：请参考```一、自定义变量参数说明```中变量的作用说明，变量值填写在""之间，变量之间空一格，不用的变量可以删除
 
