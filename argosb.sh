@@ -8,7 +8,7 @@ if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -
 [ -z "${xhpt+x}" ] || xhp=yes
 [ -z "${anpt+x}" ] || anp=yes
 [ -z "${warp+x}" ] || wap=yes
-[ "$vlp" = yes ] || [ "$vmp" = yes ] || [ "$hyp" = yes ] || [ "$tup" = yes ] || [ "$xhp" = yes ] || [ "$anp" = yes ] || { echo "提示：使用此脚本时，请在脚本前至少设置一个协议变量哦，再见！"; exit; }
+[ "$vlp" = yes ] || [ "$vmp" = yes ] || [ "$hyp" = yes ] || [ "$tup" = yes ] || [ "$xhp" = yes ] || [ "$anp" = yes ] || { echo "提示：使用ArgoSB脚本时，请在脚本前至少设置一个协议变量哦，再见！"; exit; }
 fi
 export uuid=${uuid:-''}
 export port_vl_re=${vlpt:-''}
@@ -30,13 +30,13 @@ echo "双栈VPS显示IPv6节点配置：ip=6 agsb或者脚本 list"
 echo "重启脚本：agsb或者脚本 res"
 echo "卸载脚本：agsb或者脚本 del"
 }
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣"
 echo "甬哥Github项目 ：github.com/yonggekkk"
 echo "甬哥Blogger博客 ：ygkkk.blogspot.com"
 echo "甬哥YouTube频道 ：www.youtube.com/@ygkkk"
-echo "ArgoSB一键无交互极简脚本"
+echo "ArgoSB一键无交互小钢炮脚本💣"
 echo "当前版本：V25.7.15"
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣💣"
 hostname=$(uname -a | awk '{print $2}')
 op=$(cat /etc/redhat-release 2>/dev/null || cat /etc/os-release 2>/dev/null | grep -i pretty_name | cut -d \" -f2)
 [ -z "$(systemd-detect-virt 2>/dev/null)" ] && vi=$(virt-what 2>/dev/null) || vi=$(systemd-detect-virt 2>/dev/null)
@@ -701,7 +701,7 @@ public_key_x=$(cat "$HOME/agsb/xrk/public_key")
 short_id_x=$(cat "$HOME/agsb/xrk/short_id")
 fi
 if [ -f "$HOME/agsb/port_xh" ]; then
-echo "【 vless-xhttp-reality 】节点信息如下："
+echo "💣【 vless-xhttp-reality 】节点信息如下："
 port_xh=$(cat "$HOME/agsb/port_xh")
 vl_xh_link="vless://$uuid@$server_ip:$port_xh?encryption=none&security=reality&sni=$ym_vl_re&fp=chrome&pbk=$public_key_x&sid=$short_id_x&type=xhttp&path=$uuid-xh&mode=auto#vl-xhttp-reality-$hostname"
 echo "$vl_xh_link" >> "$HOME/agsb/jh.txt"
@@ -709,7 +709,7 @@ echo "$vl_xh_link"
 echo
 fi
 if [ -f "$HOME/agsb/port_vl_re" ]; then
-echo "【 vless-reality-vision 】节点信息如下："
+echo "💣【 vless-reality-vision 】节点信息如下："
 port_vl_re=$(cat "$HOME/agsb/port_vl_re")
 vl_link="vless://$uuid@$server_ip:$port_vl_re?encryption=none&flow=xtls-rprx-vision&security=reality&sni=$ym_vl_re&fp=chrome&pbk=$public_key_x&sid=$short_id_x&type=tcp&headerType=none#vl-reality-vision-$hostname"
 echo "$vl_link" >> "$HOME/agsb/jh.txt"
@@ -717,7 +717,7 @@ echo "$vl_link"
 echo
 fi
 if [ -f "$HOME/agsb/port_vm_ws" ]; then
-echo "【 vmess-ws 】节点信息如下："
+echo "💣【 vmess-ws 】节点信息如下："
 port_vm_ws=$(cat "$HOME/agsb/port_vm_ws")
 vm_link="vmess://$(echo "{ \"v\": \"2\", \"ps\": \"vm-ws-$hostname\", \"add\": \"$server_ip\", \"port\": \"$port_vm_ws\", \"id\": \"$uuid\", \"aid\": \"0\", \"scy\": \"auto\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"www.bing.com\", \"path\": \"/$uuid-vm?ed=2048\", \"tls\": \"\"}" | base64 -w0)"
 echo "$vm_link" >> "$HOME/agsb/jh.txt"
@@ -725,7 +725,7 @@ echo "$vm_link"
 echo
 fi
 if [ -f "$HOME/agsb/port_an" ]; then
-echo "【 AnyTLS 】节点信息如下："
+echo "💣【 AnyTLS 】节点信息如下："
 port_an=$(cat "$HOME/agsb/port_an")
 an_link="anytls://$uuid@$server_ip:$port_an?insecure=1#anytls-$hostname"
 echo "$an_link" >> "$HOME/agsb/jh.txt"
@@ -733,7 +733,7 @@ echo "$an_link"
 echo
 fi
 if [ -f "$HOME/agsb/port_hy2" ]; then
-echo "【 Hysteria2 】节点信息如下："
+echo "💣【 Hysteria2 】节点信息如下："
 port_hy2=$(cat "$HOME/agsb/port_hy2")
 hy2_link="hysteria2://$uuid@$server_ip:$port_hy2?security=tls&alpn=h3&insecure=1&sni=www.bing.com#hy2-$hostname"
 echo "$hy2_link" >> "$HOME/agsb/jh.txt"
@@ -741,7 +741,7 @@ echo "$hy2_link"
 echo
 fi
 if [ -f "$HOME/agsb/port_tu" ]; then
-echo "【 Tuic 】节点信息如下："
+echo "💣【 Tuic 】节点信息如下："
 port_tu=$(cat "$HOME/agsb/port_tu")
 tuic5_link="tuic://$uuid:$uuid@$server_ip:$port_tu?congestion_control=bbr&udp_relay_mode=native&alpn=h3&sni=www.bing.com&allow_insecure=1#tuic-$hostname"
 echo "$tuic5_link" >> "$HOME/agsb/jh.txt"
@@ -781,7 +781,7 @@ sbtk=$(cat "$HOME/agsb/sbargotoken.log" 2>/dev/null)
 if [ -n "$sbtk" ]; then
 nametn="当前Argo固定隧道token：$sbtk"
 fi
-argoshow=$(echo "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n1、443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、80端口的vmess-ws-argo节点\n$vma_link7\n")
+argoshow=$(echo "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n1、💣443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、💣80端口的vmess-ws-argo节点\n$vma_link7\n")
 fi
 echo "---------------------------------------------------------"
 echo -e "$argoshow"
