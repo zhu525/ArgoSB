@@ -134,7 +134,7 @@ tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/
 
 #### 3：可选任意协议组合 + Argo临时/固定隧道
 ```
-vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
 ---------------------------------------------------------
