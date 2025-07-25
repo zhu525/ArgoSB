@@ -63,15 +63,17 @@
 
 3、argo临时隧道重启后，临时域名会变，需重新导出argo节点，固定隧道则不变
 
-4、如果已安装了warp脚本，这将与argosb内置warp冲突，两者必须选其一
+4、如果已安装了其他warp脚本，这将与argosb内置warp冲突，两者必须选其一
 
 ----------------------------------------------------------
 
 ### 二、SSH一键变量脚本模版说明：
 
-脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行，一次回车即可快速安装，方便保存，随时可用
+脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行
 
-必选其一的协议端口变量：```vmpt=""(argo)```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```、```sspt=""```
+一次回车即可快速安装，方便保存，随时可用
+
+必选其一的协议端口变量：```vmpt=""```、```vmpt="" argo="y"```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```、```sspt=""```
 
 可选功能型变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ip=""```、```name=""```
 
