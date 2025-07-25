@@ -761,6 +761,7 @@ if [ -f "$HOME/agsb/port_ss" ]; then
 echo "💣【 Shadowsocks-2022 】节点信息如下："
 port_ss=$(cat "$HOME/agsb/port_ss")
 ss_link="ss://$(echo -n "2022-blake3-aes-128-gcm:$sskey@$server_ip:$port_ss" | base64 -w0)#${sxname}Shadowsocks-2022-$hostname"
+echo "$ss_link" >> "$HOME/agsb/jh.txt"
 echo "$ss_link"
 echo
 fi
