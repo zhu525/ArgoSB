@@ -12,8 +12,8 @@
 
 #### 5、指定内核可选Wireguard-WARP全局出站模式，更换落地IP为WARP的IP，可解锁流媒体，添加ipv4与ipv6
 
-#### 6、所有代理协议都无需域名，支持单个或多个代理协议任意组合
-【目前支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Shadowsocks-2022、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
+#### 6、所有代理协议都无需域名（除了argo固定隧道），支持单个或多个代理协议任意组合
+【已支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Shadowsocks-2022、Vmess-ws、Hy2、Tuic、Argo临时/固定隧道】
 
 #### 7、如需要多样的功能，推荐使用VPS专用四合一脚本[Sing-box-yg](https://github.com/yonggekkk/sing-box-yg)
 
@@ -69,7 +69,7 @@
 
 ### 二、SSH一键变量脚本模版说明：
 
-脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行，一次回车即可快速安装
+脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行，一次回车即可快速安装，方便保存，随时可用
 
 必选其一的协议端口变量：```vmpt=""(argo)```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```、```sspt=""```
 
