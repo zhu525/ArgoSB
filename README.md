@@ -42,7 +42,7 @@
 | 17、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
 
-![f776f1b3b1e0ebe9a537baf8660a387](https://github.com/user-attachments/assets/b9b357de-85b8-4270-aa87-2f50d63d672e)
+<img width="926" height="602" alt="fbb5de8b838df475c10561d47ad9202b" src="https://github.com/user-attachments/assets/33935ca5-6724-492e-9fe7-8d4237acb2b4" />
 
 
 #### 使用```ygkkk/argosb```镜像注意：
