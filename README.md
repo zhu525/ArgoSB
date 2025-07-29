@@ -134,7 +134,7 @@ Tuic协议节点
 tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-#### 3：可选任意协议组合 + Argo临时/固定隧道
+#### 3：可选任意协议组合 + Argo临时/固定隧道 ，不用的协议变量可以删除
 ```
 sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
