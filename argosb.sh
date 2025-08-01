@@ -871,6 +871,8 @@ kill -15 $(pgrep -f 'agsb/s' 2>/dev/null) $(pgrep -f 'agsb/c' 2>/dev/null) $(pgr
 v4orv6(){
 if [ -z "$(curl -s4m5 icanhazip.com -k)" ]; then
 echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1\nnameserver 2a01:4f8:c2c:123f::1" > /etc/resolv.conf
+fi
+if [ -n "$(curl -s6m5 icanhazip.com -k)" ]; then
 sendip="2606:4700:d0::a29f:c101"
 xendip="[2606:4700:d0::a29f:c101]"
 else
