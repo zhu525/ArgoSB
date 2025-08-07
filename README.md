@@ -1,27 +1,33 @@
-# 25.8即将更新！！！！！！！！
+## ArgoSB一键无交互小钢炮脚本💣：极简 + 轻量 + 快速
 
-## ArgoSB一键无交互小钢炮脚本💣【当前版本：V25.7.15】
+---------------------------------------
 
 <img width="636" height="238" alt="0cbc3f82134b4fc99afd6cee37e98be" src="https://github.com/user-attachments/assets/a76ca418-badb-4e9a-a771-6682ec713e06" />
+
+### 【ArgoSB当前版本：V25.8.8】
+
+---------------------------------------
 
 #### 1、基于Sing-box + Xray + Cloudflared-Argo 三内核自动分配
 
 #### 2、支持Docker Image镜像部署，公开镜像库：```ygkkk/argosb```
 
-#### 3、SSH脚本主打极简、轻量、快速，几乎无需依赖，支持非root，兼容所有主流VPS系统
+#### 3、支持Linux类主流VPS系统，SSH脚本支持非root，几乎无需依赖，无脑一次回车搞定
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云、CloudCat的服务器
 
-#### 5、指定内核可选Wireguard-WARP全局出站模式，更换落地IP为WARP的IP，可解锁流媒体，添加ipv4与ipv6
+#### 5、可选内核Wireguard-WARP全局出站模式，更换落地IP为IPV4+IPV6的WARP的IP，解锁流媒体
 
-#### 6、所有代理协议都无需域名（除了argo固定隧道），支持单个或多个代理协议任意组合
+#### 6、可选IPV4或者IPV6的配置输出；可选四档IP优先级的切换
+
+#### 7、所有代理协议都无需域名（除了argo固定隧道），支持单个或多个代理协议任意组合并快速重置更换
 【已支持：AnyTLS、Vless-xhttp-reality、Vless-reality-vision、Shadowsocks-2022、Vmess-ws、Hysteria2、Tuic、Argo临时/固定隧道】
 
-#### 7、如需要多样的功能，推荐使用VPS专用四合一脚本[Sing-box-yg](https://github.com/yonggekkk/sing-box-yg)
+#### 8、如需要多样的功能，推荐使用VPS专用四合一脚本[Sing-box-yg](https://github.com/yonggekkk/sing-box-yg)
 
 ----------------------------------------------------------
 
-### 一、自定义变量参数说明：
+## 一、自定义变量参数说明：
 
 | 变量意义 | 变量名称| 在变量值""之间填写| 删除变量 | 在变量值""之间留空 | 变量要求及说明 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -38,68 +44,34 @@
 | 11、argo固定隧道token | agk | CF获取的ey开头的token | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道 |
 | 12、uuid密码 | uuid | 符合uuid规定格式 | 随机生成 | 随机生成 | 可选 |
 | 13、reality域名（仅支持reality类协议） | reym | 符合reality域名规定 | yahoo | yahoo | 可选，使用CF类域名时，可用作ProxyIP/客户端地址反代IP（建议高位端口或纯IPV6下使用，以防被扫泄露）|
-| 14、切换ipv4或ipv6配置 | ip | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
-| 15、添加所有节点名称前缀 | name | 任意字符 | 默认协议名前缀 | 默认协议名前缀 | 可选 |
-| 16、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
-| 17、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
-
+| 14、切换ipv4或ipv6配置 | ippz | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
+| 15、切换ipv4或ipv6出站优先 | ipyx | 填写4或6或46或64 | 系统默认优先 | 系统默认优先 | 可选，46表示IPV4出站优先，64表示IPV6出站优先，4表示仅IPV4出站，6表示仅IPV6出站 |
+| 16、添加所有节点名称前缀 | name | 任意字符 | 默认协议名前缀 | 默认协议名前缀 | 可选 |
+| 17、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
+| 18、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
 <img width="926" height="602" alt="fbb5de8b838df475c10561d47ad9202b" src="https://github.com/user-attachments/assets/33935ca5-6724-492e-9fe7-8d4237acb2b4" />
 
-
-#### 使用```ygkkk/argosb```镜像注意：
-
-1、uuid变量建议都加上，重启后uuid将保持不变
-
-2、点击restart重启，即可自动更新镜像，但reality协议相关key会被重置，需重新导出reality节点
-
-3、argo临时隧道重启后，临时域名会变，需重新导出argo节点，固定隧道则不变
-
-4、xray/sing-box/argo三内核同时运行会触发某些docker容器限制而报错，建议最多同时运行两个内核
-
-#### 使用VPS注意：
-
-1、uuid留空随机生成后，重启后uuid将保持不变
-
-2、更新脚本只能卸载重装，建议留存带变量的脚本，方便快速重装
-
-3、argo临时隧道重启后，临时域名会变，需重新导出argo节点，固定隧道则不变
-
-4、如果已安装了其他warp脚本，这将与argosb内置warp冲突，两者必须选其一
-
 ----------------------------------------------------------
 
-### 二、SSH一键变量脚本模版说明：
+## 二、SSH一键变量脚本模版说明：
 
-脚本以 ```变量名称="变量值"的单个或多个组合 + bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)``` 的形式运行
+### 脚本以 ```变量名称="变量值"的单个或多个组合 + 主脚本``` 的形式运行
 
-一次回车即可快速安装，方便保存，随时可用
+主脚本：```bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)```
 
 必选其一的协议端口变量：```vmpt=""```、```vmpt="" argo="y"```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```、```sspt=""```
 
-可选功能型变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ip=""```、```name=""```
+可选的功能类变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ippz=""```、```ipyx=""```、```name=""```
 
-注意：请参考```一、自定义变量参数说明```中变量的作用说明，变量值填写在""之间，变量之间空一格，不用的变量可以删除
+请参考```一、自定义变量参数说明```中变量的作用说明，变量值填写在```" "```之间，变量之间空一格，不用的变量可以删除
 
-----------------------------------------------------------
-
-### 三、SSH一键脚本的三类组合推荐：
-
-#### 1：仅Argo临时/固定隧道
-
-类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
-
-仅argo临时隧道节点
+* ### 模版1：多个任意协议组合运行
 ```
-vmpt="" argo="y" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-仅argo固定隧道节点，必须填写端口(vmpt)、域名(agn)、token(agk)
-```
-vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
-```
-
-#### 2：单协议，主流UPD协议或者TCP协议单独运行
+* ### 模版2：主流TCP协议或者UDP单个协议运行
 
 Vless-Reality-Vision协议节点
 ```
@@ -126,7 +98,7 @@ Vmess-ws协议节点
 vmpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-Hy2协议节点
+Hysteria2协议节点
 ```
 hypt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
@@ -136,36 +108,39 @@ Tuic协议节点
 tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-#### 3：可选任意协议组合 + Argo临时/固定隧道 ，不用的协议变量可以删除
+* ### 模版3：仅Argo临时/固定隧道运行
+
+类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
+
+仅argo临时隧道节点
 ```
-sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+vmpt="" argo="y" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
+
+仅argo固定隧道节点，必须填写端口(vmpt)、域名(agn)、token(agk)
+```
+vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
 ---------------------------------------------------------
 
-### 四、SSH快捷方式 (首次安装成功后需重连SSH，agsb快捷方式才可生效)：
+## 三、多功能SSH快捷方式命令组
 
- 1、查看Argo的固定域名、固定隧道的token、临时域名、当前已安装的节点信息：
+#### 说明：首次安装成功后需重连SSH，```agsb 命令```的快捷方式才可生效；如未生效，请使用```主脚本 命令```的快捷方式
 
-```agsb list``` 或者 ```bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) list```
+1、查看Argo的固定域名、固定隧道的token、临时域名、当前已安装的节点信息的命令：```agsb list``` 或者 ```主脚本 list```
 
- 2、在线切换IPV4/IPV6节点配置 (双栈VPS专享)：
+2、已安装后更换协议的命令：```自定义各种协议变量组 agsb rep``` 或者 ```自定义各种协议变量组 主脚本 rep```
 
-显示IPV4节点配置：
+3、重启脚本的命令：```agsb res``` 或者 ```主脚本 res```
 
-```ip=4 agsb list```或者```ip=4 bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) list```
+4、卸载脚本的命令：```agsb del``` 或者 ```主脚本 del```
 
-显示IPV6节点配置：
+5、切换IPV4/IPV6节点配置 (双栈VPS专享)：
 
-```ip=6 agsb list```或者```ip=6 bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) list```
+显示IPV4节点配置：```ippz=4 agsb list```或者```ippz=4 主脚本 list```
 
- 3、重启脚本：
-
-```agsb res``` 或者 ```bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) res```
-
- 4、卸载脚本：
-
-```agsb del``` 或者 ```bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) del```
+显示IPV6节点配置：```ippz=6 agsb list```或者```ippz=6 主脚本 list```
 
 ----------------------------------------------------------
 
