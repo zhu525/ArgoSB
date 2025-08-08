@@ -147,7 +147,9 @@ vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(cur
 
 #### 相关教程可参考甬哥博客，视频教程如下：
 
-最新推荐：[Clawcloud爪云、IDX Google VPS的福音：解决服务器IP访问困扰！Argosb脚本新增WARP出站功能，轻松更换落地IP为Cloudflare WARP IP](https://youtu.be/HO_XLBmIYJw)
+最新推荐：[ArgoSB一键无交互小钢炮脚本💣（一）：VPS/nat VPS专场；仅按一次回车，多协议自由搭配，最强无脑代理脚本](https://youtu.be/CiXmttY7mhw)
+
+[Clawcloud爪云、IDX Google VPS的福音：解决服务器IP访问困扰！Argosb脚本新增WARP出站功能，轻松更换落地IP为Cloudflare WARP IP](https://youtu.be/HO_XLBmIYJw)
 
 [Claw.cloud免费VPS搭建代理最终教程（五）：ArgoSB脚本docker镜像更新支持AnyTLS、Xhttp-Reality](https://youtu.be/-mhZIhHRyno)
 
