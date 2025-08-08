@@ -32,6 +32,7 @@ export ipyx=${ipyx:-''}
 export warp=${warp:-''}
 export name=${name:-''}
 showmode(){
+echo "ArgoSB脚本项目地址：https://github.com/yonggekkk/ArgoSB"
 echo "主脚本：bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)"
 echo "显示节点信息命令：agsb list 【或者】 主脚本 list"
 echo "已安装后更换协议命令：自定义各种协议变量组 agsb rep 【或者】 自定义各种协议变量组 主脚本 rep"
@@ -912,12 +913,14 @@ cleandel
 rm -rf "$HOME/agsb"
 echo "卸载完成"
 echo "欢迎继续使用甬哥侃侃侃ygkkk的ArgoSB一键无交互小钢炮脚本💣"
+echo
 showmode
 exit
 elif [ "$1" = "rep" ]; then
 cleandel
 find "$HOME/agsb" -mindepth 1 -not -name sing-box -not -name xray -not -name cloudflared -exec rm -rf {} +
-echo "ArgoSB重置协议完成，重装开始……" && sleep 3
+echo "ArgoSB重置协议完成，开始更新相关协议变量……" && sleep 3
+echo
 elif [ "$1" = "list" ]; then
 cip
 exit
@@ -967,6 +970,7 @@ cip
 echo
 else
 echo "ArgoSB脚本已安装"
+echo
 echo "相关快捷方式如下："
 showmode
 exit
