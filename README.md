@@ -68,7 +68,7 @@
 
 * ### 模版1：多个任意协议组合运行
 ```
-sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" argo="y" agn="" agk="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
 * ### 模版2：主流TCP协议或者UDP单个协议运行
