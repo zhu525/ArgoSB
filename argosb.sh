@@ -33,12 +33,12 @@ export warp=${warp:-''}
 export name=${name:-''}
 showmode(){
 echo "主脚本：bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)"
-echo "显示节点信息：agsb list 【或者】 主脚本 list"
-echo "已安装后更换协议的命令：自定义各种协议变量组 agsb rep 【或者】 自定义各种协议变量组 主脚本 rep"
-echo "重启脚本的命令：agsb res 【或者】 主脚本 res"
-echo "卸载脚本的命令：agsb del 【或者】 主脚本 del"
-echo "双栈VPS显示IPv4节点配置：ippz=4 agsb list 【或者】 ippz=4 主脚本 list"
-echo "双栈VPS显示IPv6节点配置：ippz=6 agsb list 【或者】 ippz=6 主脚本 list"
+echo "显示节点信息命令：agsb list 【或者】 主脚本 list"
+echo "已安装后更换协议命令：自定义各种协议变量组 agsb rep 【或者】 自定义各种协议变量组 主脚本 rep"
+echo "重启脚本命令：agsb res 【或者】 主脚本 res"
+echo "卸载脚本命令：agsb del 【或者】 主脚本 del"
+echo "双栈VPS显示IPv4节点配置命令：ippz=4 agsb list 【或者】 ippz=4 主脚本 list"
+echo "双栈VPS显示IPv6节点配置命令：ippz=6 agsb list 【或者】 ippz=6 主脚本 list"
 }
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "甬哥Github项目 ：github.com/yonggekkk"
