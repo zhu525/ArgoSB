@@ -71,7 +71,7 @@
 sspt="" vlpt="" vmpt="" hypt="" tupt="" xhpt="" anpt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-* ### 模版2：主流TCP协议或者UDP单个协议运行
+* ### 模版2：主流TCP或UDP单个协议运行
 
 Vless-Reality-Vision协议节点
 ```
