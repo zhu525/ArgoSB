@@ -783,7 +783,7 @@ echo "*********************************************************"
 echo "ArgoSB脚本输出节点配置如下："
 echo
 case "$server_ip" in
-104.28*|\[2a09*) echo "检测到有WARP的IP作为客户端地址 (104.28或者2a09开头的IP)，请手动更换为VPS本地IPV4或者IPV6地址" && sleep 3 ;;
+104.28*|\[2a09*) echo "检测到有WARP的IP作为客户端地址 (104.28或者2a09开头的IP)，请在客户端上把WARP的IP手动更换为VPS本地IPV4或者IPV6地址" && sleep 3 ;;
 esac
 echo
 if [ -e "$HOME/agsb/xray" ]; then
