@@ -40,6 +40,7 @@ echo "重启脚本命令：agsb res 【或者】 主脚本 res"
 echo "卸载脚本命令：agsb del 【或者】 主脚本 del"
 echo "双栈VPS显示IPv4节点配置命令：ippz=4 agsb list 【或者】 ippz=4 主脚本 list"
 echo "双栈VPS显示IPv6节点配置命令：ippz=6 agsb list 【或者】 ippz=6 主脚本 list"
+echo "---------------------------------------------------------"
 echo
 }
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -892,8 +893,6 @@ echo "聚合节点信息，请查看$HOME/agsb/jh.txt文件或者运行cat $HOME
 echo "---------------------------------------------------------"
 echo "相关快捷方式如下：(首次安装成功后需重连SSH，agsb快捷方式才可生效)"
 showmode
-echo "---------------------------------------------------------"
-echo
 }
 cleandel(){
 for P in /proc/[0-9]*; do if [ -L "$P/exe" ]; then TARGET=$(readlink -f "$P/exe" 2>/dev/null); if echo "$TARGET" | grep -qE '/agsb/c|/agsb/s|/agsb/x'; then PID=$(basename "$P"); kill "$PID" 2>/dev/null && echo "Killed $PID ($TARGET)" || echo "Could not kill $PID ($TARGET)"; fi; fi; done
