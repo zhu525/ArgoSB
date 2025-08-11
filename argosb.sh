@@ -882,10 +882,10 @@ sbtk=$(cat "$HOME/agsb/sbargotoken.log" 2>/dev/null)
 if [ -n "$sbtk" ]; then
 nametn="当前Argo固定隧道token：$sbtk"
 fi
-argoshow=$(echo "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n1、💣443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、💣80端口的vmess-ws-argo节点\n$vma_link7\n")
+argoshow=$(echo -e "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n1、💣443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、💣80端口的vmess-ws-argo节点\n$vma_link7\n")
 fi
 echo "---------------------------------------------------------"
-echo -e "$argoshow"
+echo "$argoshow"
 echo "---------------------------------------------------------"
 echo "聚合节点信息，请查看$HOME/agsb/jh.txt文件或者运行cat $HOME/agsb/jh.txt进行复制"
 echo "---------------------------------------------------------"
