@@ -40,6 +40,7 @@ echo "重启脚本命令：agsb res 【或者】 主脚本 res"
 echo "卸载脚本命令：agsb del 【或者】 主脚本 del"
 echo "双栈VPS显示IPv4节点配置命令：ippz=4 agsb list 【或者】 ippz=4 主脚本 list"
 echo "双栈VPS显示IPv6节点配置命令：ippz=6 agsb list 【或者】 ippz=6 主脚本 list"
+echo
 }
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "甬哥Github项目 ：github.com/yonggekkk"
@@ -882,7 +883,7 @@ sbtk=$(cat "$HOME/agsb/sbargotoken.log" 2>/dev/null)
 if [ -n "$sbtk" ]; then
 nametn="当前Argo固定隧道token：$sbtk"
 fi
-argoshow=$(echo -e "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n1、💣443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、💣80端口的vmess-ws-argo节点\n$vma_link7\n")
+argoshow=$(echo -e "Vmess主协议端口(Argo固定隧道端口)：$port_vm_ws\n当前Argo$name域名：$argodomain\n$nametn\n\n1、💣443端口的vmess-ws-tls-argo节点\n$vmatls_link1\n\n2、💣80端口的vmess-ws-argo节点\n$vma_link7\n")
 fi
 echo "---------------------------------------------------------"
 echo "$argoshow"
