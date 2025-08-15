@@ -682,7 +682,7 @@ chmod +x "$SCRIPT_PATH"
 sed -i '/export PATH="\$HOME\/bin:\$PATH"/d' ~/.bashrc
 echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.bashrc"
 grep -qxF 'source ~/.bashrc' ~/.bash_profile 2>/dev/null || echo 'source ~/.bashrc' >> ~/.bash_profile
-. ~/.bashrc
+. ~/.bashrc 2>/dev/null
 crontab -l > /tmp/crontab.tmp 2>/dev/null
 sed -i '/agsb\/sing-box/d' /tmp/crontab.tmp
 sed -i '/agsb\/xray/d' /tmp/crontab.tmp
@@ -899,7 +899,7 @@ for P in /proc/[0-9]*; do if [ -L "$P/exe" ]; then TARGET=$(readlink -f "$P/exe"
 kill -15 $(pgrep -f 'agsb/s' 2>/dev/null) $(pgrep -f 'agsb/c' 2>/dev/null) $(pgrep -f 'agsb/x' 2>/dev/null) >/dev/null 2>&1
 sed -i '/yonggekkk/d' ~/.bashrc
 sed -i '/export PATH="\$HOME\/bin:\$PATH"/d' ~/.bashrc
-. ~/.bashrc
+. ~/.bashrc 2>/dev/null
 crontab -l > /tmp/crontab.tmp 2>/dev/null
 sed -i '/agsb\/sing-box/d' /tmp/crontab.tmp
 sed -i '/agsb\/xray/d' /tmp/crontab.tmp
