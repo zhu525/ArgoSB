@@ -44,11 +44,12 @@
 | 11、argo固定隧道token | agk | CF获取的ey开头的token | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道 |
 | 12、uuid密码 | uuid | 符合uuid规定格式 | 随机生成 | 随机生成 | 可选 |
 | 13、reality域名（仅支持reality类协议） | reym | 符合reality域名规定 | yahoo | yahoo | 可选，使用CF类域名时，可用作ProxyIP/客户端地址反代IP（建议高位端口或纯IPV6下使用，以防被扫泄露）|
-| 14、切换ipv4或ipv6配置 | ippz | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
-| 15、切换ipv4或ipv6出站优先 | ipyx | 填写4或6或46或64 | 系统默认优先 | 系统默认优先 | 可选，46表示IPV4出站优先，64表示IPV6出站优先，4表示仅IPV4出站，6表示仅IPV6出站 |
-| 16、添加所有节点名称前缀 | name | 任意字符 | 默认协议名前缀 | 默认协议名前缀 | 可选 |
-| 17、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
-| 18、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
+| 14、vmess-cdn域名（仅vmess协议） | cdnym | 解析在CF的域名 | vmess为直连 | vmess为直连 | 可选，使用80系CDN或者回源CDN时可设置，否则客户端host地址需手动更改为解析在CF的域名|
+| 15、切换ipv4或ipv6配置 | ippz | 填写4或者6 | 自动识别IP配置 | 自动识别IP配置 | 可选，4表示IPV4配置输出，6表示IPV6配置输出 |
+| 16、切换ipv4或ipv6出站优先 | ipyx | 填写4或6或46或64 | 系统默认优先 | 系统默认优先 | 可选，46表示IPV4出站优先，64表示IPV6出站优先，4表示仅IPV4出站，6表示仅IPV6出站 |
+| 17、添加所有节点名称前缀 | name | 任意字符 | 默认协议名前缀 | 默认协议名前缀 | 可选 |
+| 18、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
+| 19、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
 <img width="926" height="602" alt="fbb5de8b838df475c10561d47ad9202b" src="https://github.com/user-attachments/assets/33935ca5-6724-492e-9fe7-8d4237acb2b4" />
 
@@ -62,7 +63,7 @@
 
 必选其一的协议端口变量：```vmpt=""```、```vmpt="" argo="y"```、```vlpt=""```、```xhpt=""```、```anpt=""```、```hypt=""```、```tupt=""```、```sspt=""```
 
-可选的功能类变量：```warp=""```、```uuid=""```、```reym=""```、```argo=""```、```agn=""```、```agk=""```、```ippz=""```、```ipyx=""```、```name=""```
+可选的功能类变量：```warp=""```、```uuid=""```、```reym=""```、```cdnym=""```、```argo=""```、```agn=""```、```agk=""```、```ippz=""```、```ipyx=""```、```name=""```
 
 请参考```一、自定义变量参数说明```中变量的作用说明，变量值填写在```" "```之间，变量之间空一格，不用的变量可以删除
 
