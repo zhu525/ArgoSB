@@ -24,6 +24,7 @@ export port_xh=${xhpt:-''}
 export port_an=${anpt:-''}
 export port_ss=${sspt:-''}
 export ym_vl_re=${reym:-''}
+export cdnym=${cdnym:-''}
 export argo=${argo:-''}
 export ARGO_DOMAIN=${agn:-''}
 export ARGO_AUTH=${agk:-''}
@@ -445,6 +446,10 @@ port_vm_ws=$(shuf -i 10000-65535 -n 1)
 fi
 echo "$port_vm_ws" > "$HOME/agsb/port_vm_ws"
 echo "Vmess-ws端口：$port_vm_ws"
+if [ -n "$cdnym" ]; then
+echo "$cdnym" > "$HOME/agsb/cdnym"
+echo "80系CDN或者回源CDN的host域名(已托管在CF)：$cdnym"
+fi
 if [ -e "$HOME/agsb/xray" ]; then
 cat >> "$HOME/agsb/xr.json" <<EOF
         {
@@ -673,7 +678,7 @@ echo
 if find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' || pgrep -f 'agsb/(s|x)' >/dev/null 2>&1 ; then
 [ -f ~/.bashrc ] || touch ~/.bashrc
 sed -i '/yonggekkk/d' ~/.bashrc
-echo "if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' && ! pgrep -f 'agsb/(s|x)' >/dev/null 2>&1; then echo '检测到系统可能中断过，建议在SSH对话框输入 reboot 重启下服务器以修复这个问题。现在自动执行ArgoSB脚本的节点恢复操作，请稍等……'; sleep 6; export name=\"${name}\" ipyx=\"${ipyx}\" ippz=\"${ippz}\" argo=\"${argo}\" uuid=\"${uuid}\" $wap=\"${warp}\" $xhp=\"${port_xh}\" $ssp=\"${port_ss}\" $anp=\"${port_an}\" $vlp=\"${port_vl_re}\" $vmp=\"${port_vm_ws}\" $hyp=\"${port_hy2}\" $tup=\"${port_tu}\" reym=\"${ym_vl_re}\" agn=\"${ARGO_DOMAIN}\" agk=\"${ARGO_AUTH}\"; bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh); fi" >> ~/.bashrc
+echo "if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' && ! pgrep -f 'agsb/(s|x)' >/dev/null 2>&1; then echo '检测到系统可能中断过，建议在SSH对话框输入 reboot 重启下服务器。现在自动执行ArgoSB脚本的节点恢复操作，请稍等……'; sleep 6; export cdnym=\"${cdnym}\" name=\"${name}\" ipyx=\"${ipyx}\" ippz=\"${ippz}\" argo=\"${argo}\" uuid=\"${uuid}\" $wap=\"${warp}\" $xhp=\"${port_xh}\" $ssp=\"${port_ss}\" $anp=\"${port_an}\" $vlp=\"${port_vl_re}\" $vmp=\"${port_vm_ws}\" $hyp=\"${port_hy2}\" $tup=\"${port_tu}\" reym=\"${ym_vl_re}\" agn=\"${ARGO_DOMAIN}\" agk=\"${ARGO_AUTH}\"; bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh); fi" >> ~/.bashrc
 COMMAND="agsb"
 SCRIPT_PATH="$HOME/bin/$COMMAND"
 mkdir -p "$HOME/bin"
@@ -780,6 +785,7 @@ rm -rf "$HOME/agsb/jh.txt"
 uuid=$(cat "$HOME/agsb/uuid")
 server_ip=$(cat "$HOME/agsb/server_ip.log")
 sxname=$(cat "$HOME/agsb/name" 2>/dev/null)
+vmcdnym=$(cat "$HOME/agsb/cdnym" 2>/dev/null)
 echo "*********************************************************"
 echo "*********************************************************"
 echo "ArgoSB脚本输出节点配置如下："
@@ -826,6 +832,14 @@ vm_link="vmess://$(echo "{ \"v\": \"2\", \"ps\": \"${sxname}vm-ws-$hostname\", \
 echo "$vm_link" >> "$HOME/agsb/jh.txt"
 echo "$vm_link"
 echo
+if [ -f "$HOME/agsb/cdnym" ]; then
+echo "💣【 vmess-ws 】80系CDN或者回源CDN节点信息如下："
+echo "注：优选IP地址或者端口可自行手动修改"
+vm_cdn_link="vmess://$(echo "{ \"v\": \"2\", \"ps\": \"${sxname}vm-ws-cdn-$hostname\", \"add\": \"104.16.0.0\", \"port\": \"80\", \"id\": \"$uuid\", \"aid\": \"0\", \"scy\": \"auto\", \"net\": \"ws\", \"type\": \"none\", \"host\": \"$vmcdnym\", \"path\": \"/$uuid-vm?ed=2048\", \"tls\": \"\"}" | base64 -w0)"
+echo "$vm_cdn_link" >> "$HOME/agsb/jh.txt"
+echo "$vm_cdn_link"
+echo
+fi
 fi
 if [ -f "$HOME/agsb/port_an" ]; then
 echo "💣【 AnyTLS 】节点信息如下："
