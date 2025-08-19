@@ -287,8 +287,10 @@ vlp=vlptargo
 fi
 if [ -n "$ssp" ]; then
 ssp=sspt
+if [ ! -e "$HOME/agsb/sskey" ]; then
 sskey=$(head -c 16 /dev/urandom | base64 -w0)
 echo "$sskey" > "$HOME/agsb/sskey"
+fi
 if [ -z "$port_ss" ]; then
 port_ss=$(shuf -i 10000-65535 -n 1)
 fi
@@ -932,7 +934,7 @@ showmode
 exit
 elif [ "$1" = "rep" ]; then
 cleandel
-find "$HOME/agsb" -mindepth 1 -not -name sing-box -not -name xray -not -name cloudflared -exec rm -rf {} +
+find "$HOME/agsb" -mindepth 1 -not -name sing-box -not -name xray -not -name cloudflared -not -name sskey -not -name xrk -exec rm -rf {} +
 echo "ArgoSB重置协议完成，开始更新相关协议变量……" && sleep 3
 echo
 elif [ "$1" = "list" ]; then
