@@ -139,7 +139,7 @@ vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(cur
 
 5、卸载脚本命令：```agsb del``` 或者 ```主脚本 del```
 
-6、切换IPV4/IPV6节点配置 (双栈VPS专享)：
+6、临时切换IPV4/IPV6节点配置 (双栈VPS专享)：
 
 显示IPV4节点配置：```ippz=4 agsb list```或者```ippz=4 主脚本 list```
 
