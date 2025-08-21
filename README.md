@@ -54,6 +54,8 @@
 
 <img width="926" height="602" alt="fbb5de8b838df475c10561d47ad9202b" src="https://github.com/user-attachments/assets/33935ca5-6724-492e-9fe7-8d4237acb2b4" />
 
+<img width="1498" height="655" alt="1b05db3ba201b35f440b139e8f0ee4b1" src="https://github.com/user-attachments/assets/dfd9e034-baeb-460e-94e2-32bf88f3112a" />
+
 ----------------------------------------------------------
 
 ## 二、SSH一键变量脚本模版说明：
