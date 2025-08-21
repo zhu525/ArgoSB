@@ -117,20 +117,24 @@ Tuic协议节点
 tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-* ### 模版3：仅Argo临时/固定隧道运行
+* ### 模版3：支持开启CDN优选的节点运行
 
-类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
+Argo临时/固定隧道运行优选节点，类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
 
-仅argo临时隧道节点
+Argo临时隧道CDN优选节点
 ```
 vmpt="" argo="y" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-仅argo固定隧道节点，必须填写端口(vmpt)、域名(agn)、token(agk)
+Argo固定隧道CDN优选节点，必须填写端口(vmpt)、域名(agn)、token(agk)
 ```
 vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
+80系端口/回源端口的CDN优选节点
+```
+vmpt="80系端口、指定随机端口" cdnym="ip已解析的CF域名" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
+```
 ---------------------------------------------------------
 
 ## 三、多功能SSH快捷方式命令组
