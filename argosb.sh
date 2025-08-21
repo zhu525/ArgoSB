@@ -151,6 +151,8 @@ else
 uuid=$("$HOME/agsb/xray" uuid)
 fi
 echo "$uuid" > "$HOME/agsb/uuid"
+elif [ -n "$uuid" ]; then
+echo "$uuid" > "$HOME/agsb/uuid"
 fi
 uuid=$(cat "$HOME/agsb/uuid")
 echo "UUID密码：$uuid"
