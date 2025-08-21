@@ -300,6 +300,7 @@ if [ -z "$port_ss" ] && [ ! -e "$HOME/agsb/port_ss" ]; then
 port_ss=$(shuf -i 10000-65535 -n 1)
 echo "$port_ss" > "$HOME/agsb/port_ss"
 fi
+sskey=$(cat "$HOME/agsb/sskey")
 port_ss=$(cat "$HOME/agsb/port_ss")
 echo "Shadowsocks-2022端口：$port_ss"
 cat >> "$HOME/agsb/xr.json" <<EOF
