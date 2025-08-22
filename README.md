@@ -10,13 +10,13 @@
 
 #### 1、基于Sing-box + Xray + Cloudflared-Argo 三内核自动分配
 
-#### 2、支持Docker Image镜像部署，公开镜像库：```ygkkk/argosb```
+#### 2、支持Linux类主流VPS系统，SSH脚本支持非root环境运行，几乎无需依赖，无脑一次回车搞定
 
-#### 3、支持Linux类主流VPS系统，SSH脚本支持非root，几乎无需依赖，无脑一次回车搞定
+#### 3、支持Docker Image镜像部署，公开镜像库：```ygkkk/argosb```
 
 #### 4、支持NIX容器系统，特别推荐IDX-Google、Clawcloud爪云、CloudCat的服务器
 
-#### 5、可选内核Wireguard-WARP全局出站模式，更换落地IP为IPV4+IPV6的WARP的IP，解锁流媒体
+#### 5、可选Wireguard-WARP全局出站模式，更换落地IP为IPV4+IPV6的WARP的IP，解锁流媒体
 
 #### 6、可选IPV4或者IPV6的配置输出；可选四档IP优先级的切换
 
@@ -33,13 +33,13 @@
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1、启用vless-reality-vision | vlpt | 端口指定 | 关闭vless-reality-vision | 端口随机 | 必选之一 【xray内核：TCP】 |
 | 2、启用vless-xhttp-reality | xhpt | 端口指定 | 关闭vless-xhttp-reality | 端口随机 | 必选之一 【xray内核：TCP】 |
-| 3、启用Shadowsocks-2022 | sspt | 端口指定 | 关闭Shadowsocks-2022 | 端口随机 | 必选之一 【xray内核：TCP】 |
+| 3、启用shadowsocks-2022 | sspt | 端口指定 | 关闭shadowsocks-2022 | 端口随机 | 必选之一 【xray内核：TCP】 |
 | 4、启用anytls | anpt | 端口指定 | 关闭anytls | 端口随机 | 必选之一 【singbox内核：TCP】 |
 | 5、启用any-reality | arpt | 端口指定 | 关闭any-reality | 端口随机 | 必选之一 【singbox内核：TCP】 |
 | 6、启用vmess-ws | vmpt | 端口指定 | 关闭vmess-ws | 端口随机 | 必选之一 【xray/singbox内核：TCP】 |
 | 7、启用hysteria2 | hypt | 端口指定 | 关闭hy2 | 端口随机 | 必选之一 【singbox内核：UDP】 |
 | 8、启用tuic | tupt | 端口指定 | 关闭tuic | 端口随机 | 必选之一 【singbox内核：UDP】 |
-| 9、warp开关 | warp | 填写s或者x | 关闭warp | 所有内核协议启用warp | 可选，s表示singbox所有协议启用warp，x表示xray所有协议启用warp |
+| 9、warp开关 | warp | 填写s或者x | 关闭warp | singbox与xray内核协议都启用warp | 可选，s表示仅singbox所有协议启用warp，x表示仅xray所有协议启用warp |
 | 10、argo开关 | argo | 填写y | 关闭argo隧道 | 关闭argo隧道 | 可选，填写y时，vmess变量vmpt必须启用，且固定隧道必须填写vmpt端口 |
 | 11、argo固定隧道域名 | agn | 托管在CF上的域名 | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道|
 | 12、argo固定隧道token | agk | CF获取的ey开头的token | 使用临时隧道 | 使用临时隧道 | 可选，argo填写y才可激活固定隧道 |
@@ -117,7 +117,7 @@ Tuic协议节点
 tupt="" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-* ### 模版3：支持开启CDN优选的节点运行
+* ### 模版3：开启CDN优选的节点运行
 
 Argo临时/固定隧道运行优选节点，类似无公网的IDX-Google-VPS容器推荐使用此脚本，快速一键内网穿透获取节点
 
@@ -131,7 +131,7 @@ Argo固定隧道CDN优选节点，必须填写端口(vmpt)、域名(agn)、token
 vmpt="端口" argo="y" agn="解析的CF域名" agk="CF获取的token" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
 
-80系端口/回源端口的CDN优选节点
+80系端口、回源端口的CDN优选节点
 ```
 vmpt="80系端口、指定随机端口" cdnym="ip已解析的CF域名" bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)
 ```
@@ -161,6 +161,8 @@ vmpt="80系端口、指定随机端口" cdnym="ip已解析的CF域名" bash <(cu
 
 #### 相关教程可参考[甬哥博客](https://ygkkk.blogspot.com/2025/08/argosb.html)，视频教程如下：
 
+更新中……
+
 最新推荐：[ArgoSB一键无交互小钢炮脚本💣（二）：代理节点的IP、端口被封依旧可用！ArgoSB脚本套CDN优选4大方案教程](https://youtu.be/RnUT1CNbCr8)
 
 [ArgoSB一键无交互小钢炮脚本💣（一）：VPS/nat VPS在主协议下的应用；仅按一次回车，多协议自由搭配](https://youtu.be/CiXmttY7mhw)
@@ -177,13 +179,9 @@ vmpt="80系端口、指定随机端口" cdnym="ip已解析的CF域名" bash <(cu
 
 [Claw.cloud免费VPS搭建代理最终教程（一）：全网最简单 | 两大无交互回车脚本 | 套CDN优选IP | workers反代 | ArgoSB隧道搭建](https://youtu.be/Esofirx8xrE)
 
-[IDX Google免费VPS代理搭建教程（二）：ArgoSB一键代理脚本发布 | 一次回车搞定一切 | 懒人小白最强Argo代理节点脚本](https://youtu.be/OoXJ_jxoEyY)
-
 [IDX Google免费VPS代理搭建教程（三）：NIX容器最新工作区方式搭建Argo免费节点 | 一次回车搞定一切 | Argo固定隧道一键复活](https://youtu.be/0I5eI1KKx08)
 
 [IDX Google免费VPS代理搭建教程（四）：支持重置后自动启动代理节点功能 | 最简单的保活方法](https://youtu.be/EGrz6Wvevqc)
-
-更新中……
 
 ----------------------------------------------------------
 
