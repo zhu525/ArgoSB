@@ -52,7 +52,7 @@
 | 19、【仅容器类docker】监听端口，网页查询 | PORT | 端口指定 | 3000 | 3000 | 可选 |
 | 20、【仅容器类docker】启用vless-ws-tls | DOMAIN | 服务器域名 | 关闭vless-ws-tls | 关闭vless-ws-tls | 可选，vless-ws-tls可独立存在，uuid变量必须启用 |
 
-<img width="926" height="602" alt="fbb5de8b838df475c10561d47ad9202b" src="https://github.com/user-attachments/assets/33935ca5-6724-492e-9fe7-8d4237acb2b4" />
+<img width="926" height="602" alt="a8dd55d7606084a147580c4d292b5d10" src="https://github.com/user-attachments/assets/17509155-ad47-43bd-9943-fc7c57b72e42" />
 
 <img width="1498" height="655" alt="1b05db3ba201b35f440b139e8f0ee4b1" src="https://github.com/user-attachments/assets/dfd9e034-baeb-460e-94e2-32bf88f3112a" />
 
