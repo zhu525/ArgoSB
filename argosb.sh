@@ -33,9 +33,11 @@ export ARGO_AUTH=${agk:-''}
 export ippz=${ippz:-''}
 export warp=${warp:-''}
 export name=${name:-''}
+v46url="https://icanhazip.com"
+agsburl="https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh"
 showmode(){
 echo "ArgoSB脚本项目地址：https://github.com/yonggekkk/ArgoSB"
-echo "主脚本：bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)"
+echo "主脚本：bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh) 或 bash <(wget -qO- https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh)"
 echo "显示节点信息命令：agsb list 【或者】 主脚本 list"
 echo "更换代理协议变量组命令：自定义各种协议变量组 agsb rep 【或者】 自定义各种协议变量组 主脚本 rep"
 echo "更新脚本命令：原已安装的自定义各种协议变量组 主脚本 rep"
@@ -63,12 +65,13 @@ x86_64) cpu=amd64;;
 esac
 mkdir -p "$HOME/agsb"
 warpcheck(){
-wgcfv6=$(curl -s6m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
-wgcfv4=$(curl -s4m5 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
+url="https://www.cloudflare.com/cdn-cgi/trace"
+wgcfv6=$((command -v curl >/dev/null 2>&1 && curl -s6m5 "$url" || command -v wget >/dev/null 2>&1 && wget -6 --timeout=5 -qO- "$url") | grep warp | cut -d= -f2)
+wgcfv4=$((command -v curl >/dev/null 2>&1 && curl -s4m5 "$url" || command -v wget >/dev/null 2>&1 && wget -4 --timeout=5 -qO- "$url") | grep warp | cut -d= -f2)
 }
 v4v6(){
-v4=$(curl -s4m5 icanhazip.com -k)
-v6=$(curl -s6m5 icanhazip.com -k)
+v4=$((command -v curl >/dev/null 2>&1 && curl -s4m5 -k "$v46url") || (command -v wget >/dev/null 2>&1 && wget -4 --timeout=5 -qO- "$v46url"))
+v6=$((command -v curl >/dev/null 2>&1 && curl -s6m5 -k "$v46url") || (command -v wget >/dev/null 2>&1 && wget -6 --timeout=5 -qO- "$v46url"))
 }
 warpsx(){
 if [ -n "$name" ]; then
@@ -106,7 +109,7 @@ esac
 fi
 fi
 case "$warp" in x4) wxryx='ForceIPv4' ;; x6) wxryx='ForceIPv6' ;; *) wxryx='ForceIPv4v6' ;; esac
-case "$warp" in x4|x6|x) if curl -s6m5 icanhazip.com -k >/dev/null; then xryx='ForceIPv4v6' sbyx='prefer_ipv4'; else xryx='ForceIPv4' sbyx='ipv4_only'; fi ;; *) xryx='ForceIPv4v6' sbyx='prefer_ipv4' ;; esac
+case "$warp" in x4|x6|x) if command -v curl >/dev/null 2>&1 && curl -s6m5 -k "$v46url" >/dev/null || command -v wget >/dev/null 2>&1 && wget -6 --timeout=5 -qO- "$v46url" >/dev/null; then xryx='ForceIPv4v6' sbyx='prefer_ipv4'; else xryx='ForceIPv4' sbyx='ipv4_only'; fi ;; *) xryx='ForceIPv4v6' sbyx='prefer_ipv4' ;; esac
 }
 
 insuuid(){
@@ -127,7 +130,7 @@ installxray(){
 echo
 echo "=========启用xray内核========="
 if [ ! -e "$HOME/agsb/xray" ]; then
-curl -Lo "$HOME/agsb/xray" -# --retry 2 https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/xray-$cpu
+url="https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/xray-$cpu"; out="$HOME/agsb/xray"; (command -v curl >/dev/null 2>&1 && curl -Lo "$out" -# --retry 2 "$url") || (command -v wget>/dev/null 2>&1 && wget -O "$out" --tries=2 "$url")
 chmod +x "$HOME/agsb/xray"
 sbcore=$("$HOME/agsb/xray" version 2>/dev/null | awk '/^Xray/{print $2}')
 echo "已安装Xray正式版内核：$sbcore"
@@ -304,7 +307,7 @@ installsb(){
 echo
 echo "=========启用Sing-box内核========="
 if [ ! -e "$HOME/agsb/sing-box" ]; then
-curl -Lo "$HOME/agsb/sing-box" -# --retry 2 https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/sing-box-$cpu
+url="https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/sing-box-$cpu"; out="$HOME/agsb/sing-box"; (command -v curl>/dev/null 2>&1 && curl -Lo "$out" -# --retry 2 "$url") || (command -v wget>/dev/null 2>&1 && wget -O "$out" --tries=2 "$url")
 chmod +x "$HOME/agsb/sing-box"
 sbcore=$("$HOME/agsb/sing-box" version 2>/dev/null | awk '/version/{print $NF}')
 echo "已安装Sing-box正式版内核：$sbcore"
@@ -322,8 +325,8 @@ insuuid
 command -v openssl >/dev/null 2>&1 && openssl ecparam -genkey -name prime256v1 -out "$HOME/agsb/private.key" >/dev/null 2>&1
 command -v openssl >/dev/null 2>&1 && openssl req -new -x509 -days 36500 -key "$HOME/agsb/private.key" -out "$HOME/agsb/cert.pem" -subj "/CN=www.bing.com" >/dev/null 2>&1
 if [ ! -f "$HOME/agsb/private.key" ]; then
-curl -Lso "$HOME/agsb/private.key" https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/private.key
-curl -Lso "$HOME/agsb/cert.pem" https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/cert.pem
+url="https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/private.key"; out="$HOME/agsb/private.key"; (command -v curl>/dev/null 2>&1 && curl -Ls -o "$out" --retry 2 "$url") || (command -v wget>/dev/null 2>&1 && wget -q -O "$out" --tries=2 "$url")
+url="https://github.com/yonggekkk/ArgoSB/releases/download/argosbx/cert.pem"; out="$HOME/agsb/cert.pem"; (command -v curl>/dev/null 2>&1 && curl -Ls -o "$out" --retry 2 "$url") || (command -v wget>/dev/null 2>&1 && wget -q -O "$out" --tries=2 "$url")
 fi
 if [ -n "$hyp" ]; then
 hyp=hypt
@@ -718,9 +721,9 @@ if [ -n "$argo" ] && [ -n "$vmag" ]; then
 echo
 echo "=========启用Cloudflared-argo内核========="
 if [ ! -e "$HOME/agsb/cloudflared" ]; then
-argocore=$(curl -Ls https://data.jsdelivr.com/v1/package/gh/cloudflare/cloudflared | grep -Eo '"[0-9.]+"' | sed -n 1p | tr -d '",')
+argocore=$({ command -v curl >/dev/null 2>&1 && curl -Ls https://data.jsdelivr.com/v1/package/gh/cloudflare/cloudflared || wget -qO- https://data.jsdelivr.com/v1/package/gh/cloudflare/cloudflared; } | grep -Eo '"[0-9.]+"' | sed -n 1p | tr -d '",')
 echo "下载Cloudflared-argo最新正式版内核：$argocore"
-curl -Lo "$HOME/agsb/cloudflared" -# --retry 2 https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$cpu
+url="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-$cpu"; out="$HOME/agsb/cloudflared"; (command -v curl>/dev/null 2>&1 && curl -Lo "$out" -# --retry 2 "$url") || (command -v wget>/dev/null 2>&1 && wget -O "$out" --tries=2 "$url")
 chmod +x "$HOME/agsb/cloudflared"
 fi
 if [ -n "${ARGO_DOMAIN}" ] && [ -n "${ARGO_AUTH}" ]; then
@@ -749,11 +752,11 @@ echo
 if find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' || pgrep -f 'agsb/(s|x)' >/dev/null 2>&1 ; then
 [ -f ~/.bashrc ] || touch ~/.bashrc
 sed -i '/yonggekkk/d' ~/.bashrc
-echo "if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' && ! pgrep -f 'agsb/(s|x)' >/dev/null 2>&1; then echo '检测到系统可能中断过，或者变量格式错误？建议在SSH对话框输入 reboot 重启下服务器。现在自动执行ArgoSB脚本的节点恢复操作，请稍等……'; sleep 6; export cdnym=\"${cdnym}\" name=\"${name}\" ippz=\"${ippz}\" argo=\"${argo}\" uuid=\"${uuid}\" $wap=\"${warp}\" $xhp=\"${port_xh}\" $ssp=\"${port_ss}\" $anp=\"${port_an}\" $arp=\"${port_ar}\" $vlp=\"${port_vl_re}\" $vmp=\"${port_vm_ws}\" $hyp=\"${port_hy2}\" $tup=\"${port_tu}\" reym=\"${ym_vl_re}\" agn=\"${ARGO_DOMAIN}\" agk=\"${ARGO_AUTH}\"; bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh); fi" >> ~/.bashrc
+echo "if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -r readlink 2>/dev/null | grep -Eq 'agsb/(s|x)' && ! pgrep -f 'agsb/(s|x)' >/dev/null 2>&1; then echo '检测到系统可能中断过，或者变量格式错误？建议在SSH对话框输入 reboot 重启下服务器。现在自动执行ArgoSB脚本的节点恢复操作，请稍等……'; sleep 6; export cdnym=\"${cdnym}\" name=\"${name}\" ippz=\"${ippz}\" argo=\"${argo}\" uuid=\"${uuid}\" $wap=\"${warp}\" $xhp=\"${port_xh}\" $ssp=\"${port_ss}\" $anp=\"${port_an}\" $arp=\"${port_ar}\" $vlp=\"${port_vl_re}\" $vmp=\"${port_vm_ws}\" $hyp=\"${port_hy2}\" $tup=\"${port_tu}\" reym=\"${ym_vl_re}\" agn=\"${ARGO_DOMAIN}\" agk=\"${ARGO_AUTH}\"; bash <(command -v curl >/dev/null 2>&1 && curl -Ls "$agsburl" || wget -qO- "$agsburl"); fi" >> ~/.bashrc
 COMMAND="agsb"
 SCRIPT_PATH="$HOME/bin/$COMMAND"
 mkdir -p "$HOME/bin"
-curl -Ls https://raw.githubusercontent.com/yonggekkk/argosb/main/argosb.sh > "$SCRIPT_PATH"
+(command -v curl >/dev/null 2>&1 && curl -sL "$agsburl" -o "$SCRIPT_PATH") || (command -v wget >/dev/null 2>&1 && wget -qO "$SCRIPT_PATH" "$agsburl")
 chmod +x "$SCRIPT_PATH"
 sed -i '/export PATH="\$HOME\/bin:\$PATH"/d' ~/.bashrc
 echo 'export PATH="$HOME/bin:$PATH"' >> "$HOME/.bashrc"
@@ -789,7 +792,7 @@ fi
 }
 cip(){
 ipbest(){
-serip=$(curl -s4m5 icanhazip.com -k || curl -s6m5 icanhazip.com -k)
+serip=$((command -v curl >/dev/null 2>&1 && (curl -s4m5 -k "$v46url" || curl -s6m5 -k "$v46url")) || (command -v wget >/dev/null 2>&1 && (wget -4 -qO- --timeout=5 "$v46url" || wget -6 -qO- --timeout=5 "$v46url")))
 if echo "$serip" | grep -q ':'; then
 server_ip="[$serip]"
 echo "$server_ip" > "$HOME/agsb/server_ip.log"
@@ -1032,10 +1035,10 @@ if ! find /proc/*/exe -type l 2>/dev/null | grep -E '/proc/[0-9]+/exe' | xargs -
 for P in /proc/[0-9]*; do if [ -L "$P/exe" ]; then TARGET=$(readlink -f "$P/exe" 2>/dev/null); if echo "$TARGET" | grep -qE '/agsb/c|/agsb/s|/agsb/x'; then PID=$(basename "$P"); kill "$PID" 2>/dev/null && echo "Killed $PID ($TARGET)" || echo "Could not kill $PID ($TARGET)"; fi; fi; done
 kill -15 $(pgrep -f 'agsb/s' 2>/dev/null) $(pgrep -f 'agsb/c' 2>/dev/null) $(pgrep -f 'agsb/x' 2>/dev/null) >/dev/null 2>&1
 v4orv6(){
-if [ -z "$(curl -s4m5 icanhazip.com -k)" ]; then
+if [ -z "$((command -v curl >/dev/null 2>&1 && curl -s4m5 -k "$v46url") || (command -v wget >/dev/null 2>&1 && wget -4 -qO- --timeout=5 "$v46url"))" ]; then
 echo -e "nameserver 2a00:1098:2b::1\nnameserver 2a00:1098:2c::1" > /etc/resolv.conf
 fi
-if [ -n "$(curl -s6m5 icanhazip.com -k)" ]; then
+if [ -n "$((command -v curl >/dev/null 2>&1 && curl -s6m5 -k "$v46url") || (command -v wget >/dev/null 2>&1 && wget -6 -qO- --timeout=5 "$v46url"))" ]; then
 sendip="2606:4700:d0::a29f:c001"
 xendip="[2606:4700:d0::a29f:c001]"
 else
