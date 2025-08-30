@@ -142,6 +142,12 @@ cat > "$HOME/agsb/xr.json" <<EOF
     "error": "/dev/null",
     "loglevel": "none"
   },
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ]
+  },
   "inbounds": [
 EOF
 insuuid
